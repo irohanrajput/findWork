@@ -1,13 +1,23 @@
-from rest_framework import generics, permissions
-from .models import EmployerProfile, JobSeekerProfile
-from .serializers import EmployerProfileSerializer, JobSeekerProfileSerializer
+from rest_framework import generics
+from .models import EmployerProfile, ApplicantProfile
+from .serializers import EmployerProfileSerializer, ApplicantProfileSerializer
+
 
 class EmployerProfileListCreateView(generics.ListCreateAPIView):
     queryset = EmployerProfile.objects.all()
     serializer_class = EmployerProfileSerializer
-    permission_classes = [permissions.IsAuthenticated]
 
-class JobSeekerProfileListCreateView(generics.ListCreateAPIView):
-    queryset = JobSeekerProfile.objects.all()
-    serializer_class = JobSeekerProfileSerializer
-    permission_classes = [permissions.IsAuthenticated]
+
+class EmployerProfileDetailView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = EmployerProfile.objects.all()
+    serializer_class = EmployerProfileSerializer
+
+
+class ApplicantProfileListCreateView(generics.ListCreateAPIView):
+    queryset = ApplicantProfile.objects.all()
+    serializer_class = ApplicantProfileSerializer
+
+
+class ApplicantProfileDetailView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = ApplicantProfile.objects.all()
+    serializer_class = ApplicantProfileSerializer

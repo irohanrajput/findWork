@@ -1,12 +1,13 @@
-from django.urls import path
-from .views import (
-    EmployerProfileListCreateView, JobSeekerProfileListCreateView,
-    JobOpeningListCreateView, ApplicationListCreateView
+from django.urls import path, include
+from rest_framework_simplejwt.views import (
+    TokenObtainPairView,
+    TokenRefreshView,
 )
 
+
 urlpatterns = [
-    path('employers/', EmployerProfileListCreateView.as_view(), name='employer-list-create'),
-    path('jobseekers/', JobSeekerProfileListCreateView.as_view(), name='jobseeker-list-create'),
-    path('jobs/', JobOpeningListCreateView.as_view(), name='job-list-create'),
-    path('applications/', ApplicationListCreateView.as_view(), name='application-list-create'),
+    path('token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+    path('user/', include('apps.users.urls')),
+    path('job/', include('apps.jobs.urls')),
 ]

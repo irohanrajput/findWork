@@ -18,9 +18,9 @@ class EmployerProfile(models.Model):
     def __str__(self):
         return self.company_name
 
-class JobSeekerProfile(models.Model):
+class ApplicantProfile(models.Model):
     user = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
-    resume = models.FileField(upload_to='resumes/')
+    resume = models.FileField(upload_to='resumes/', blank=True  )
     skills = models.TextField()
     experience = models.IntegerField()
 
