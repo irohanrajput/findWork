@@ -13,7 +13,7 @@ class JobOpening(models.Model):
     def __str__(self):
         return self.title
 
-class Application(models.Model):
+class JobApplication(models.Model):
     job_opening = models.ForeignKey(JobOpening, on_delete=models.CASCADE)
     job_seeker = models.ForeignKey(JobSeekerProfile, on_delete=models.CASCADE)
     cover_letter = models.TextField()

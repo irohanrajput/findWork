@@ -1,5 +1,5 @@
 from rest_framework import generics, permissions
-from .models import JobOpening, Application
+from .models import JobOpening, JobApplication 
 from .serializers import JobOpeningSerializer, ApplicationSerializer
 
 class JobOpeningListCreateView(generics.ListCreateAPIView):
@@ -8,6 +8,6 @@ class JobOpeningListCreateView(generics.ListCreateAPIView):
     permission_classes = [permissions.IsAuthenticated]
 
 class ApplicationListCreateView(generics.ListCreateAPIView):
-    queryset = Application.objects.all()
+    queryset = JobApplication.objects.all()
     serializer_class = ApplicationSerializer
     permission_classes = [permissions.IsAuthenticated]

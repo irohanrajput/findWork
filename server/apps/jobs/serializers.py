@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import JobOpening, Application
+from .models import JobOpening, JobApplication
 
 class JobOpeningSerializer(serializers.ModelSerializer):
     class Meta:
@@ -8,5 +8,5 @@ class JobOpeningSerializer(serializers.ModelSerializer):
 
 class ApplicationSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Application
+        model = JobApplication
         fields = '__all__'
