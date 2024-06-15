@@ -55,4 +55,3 @@ class ApplicantProfileSerializer(serializers.ModelSerializer):
         user_data = validated_data.pop('user')
         user = UserSerializer.create(UserSerializer(), validated_data=user_data)
         job_seeker_profile = ApplicantProfile.objects.create(user=user, **validated_data)
-        return job_seeker_profile

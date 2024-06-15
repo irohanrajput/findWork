@@ -1,10 +1,10 @@
 from rest_framework import generics, permissions
-from .models import JobOpening, JobApplication 
-from .serializers import JobOpeningSerializer, ApplicationSerializer
+from .models import JobDetails, JobApplication 
+from .serializers import JobDetailSerializer, ApplicationSerializer
 
-class JobOpeningListCreateView(generics.ListCreateAPIView):
-    queryset = JobOpening.objects.all()
-    serializer_class = JobOpeningSerializer
+class JobDetailListCreateView(generics.ListCreateAPIView):
+    queryset = JobDetails.objects.all()
+    serializer_class = JobDetailSerializer
 
 class ApplicationListCreateView(generics.ListCreateAPIView):
     queryset = JobApplication.objects.all()

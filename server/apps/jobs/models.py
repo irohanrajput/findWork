@@ -1,7 +1,7 @@
 from django.db import models
 from apps.users.models import EmployerProfile, ApplicantProfile
 
-class JobOpening(models.Model):
+class JobDetails(models.Model):
     employer = models.ForeignKey(EmployerProfile, on_delete=models.CASCADE)
     title = models.CharField(max_length=255)
     description = models.TextField()
@@ -14,8 +14,8 @@ class JobOpening(models.Model):
         return self.title
 
 class JobApplication(models.Model):
-    job_opening = models.ForeignKey(JobOpening, on_delete=models.CASCADE)
-    job_seeker = models.ForeignKey(ApplicantProfile, on_delete=models.CASCADE)
+    job_id = models.ForeignKey(JobDetails, on_delete=models.CASCADE)
+    applicant = models.ForeignKey(ApplicantProfile, on_delete=models.CASCADE)
     cover_letter = models.TextField()
     status = models.CharField(max_length=50, choices=[('Pending', 'Pending'), ('Shortlisted', 'Shortlisted'), ('Rejected', 'Rejected')], default='Pending')
     applied_at = models.DateTimeField(auto_now_add=True)

@@ -1,4 +1,4 @@
 from django.contrib import admin
-from .models import JobOpening, JobApplication
-admin.site.register(JobOpening)
+from .models import JobDetails, JobApplication
+admin.site.register(JobDetails)
 admin.site.register(JobApplication)

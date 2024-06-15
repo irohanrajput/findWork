@@ -1,6 +1,6 @@
 from rest_framework import generics
-from .models import EmployerProfile, ApplicantProfile
-from .serializers import EmployerProfileSerializer, ApplicantProfileSerializer
+from .models import EmployerProfile, ApplicantProfile, CustomUser
+from .serializers import EmployerProfileSerializer, ApplicantProfileSerializer, UserSerializer
 
 
 class EmployerProfileListCreateView(generics.ListCreateAPIView):
@@ -21,3 +21,7 @@ class ApplicantProfileListCreateView(generics.ListCreateAPIView):
 class ApplicantProfileDetailView(generics.RetrieveUpdateDestroyAPIView):
     queryset = ApplicantProfile.objects.all()
     serializer_class = ApplicantProfileSerializer
+    
+class UserListView(generics.ListAPIView):
+    queryset = CustomUser.objects.all()
+    serializer_class = UserSerializer
