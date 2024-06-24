@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
+import axios from "axios";
 import Footer from './Footer';
 import Navbar from './Navbar';
 import Lottie from 'react-lottie';
 import animationData from '../../public/job_lottie.json';
+import { arrayOf } from 'prop-types';
 
 const defaultOptions = {
   loop: true,
@@ -14,13 +16,38 @@ const defaultOptions = {
 };
 
 function SignUp() {
+
   const [email, setEmail] = useState('');
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const [data, setData] = useState([{}])
 
 
-  
+  const handleSubmit = (e:any) => {
+    e.preventDefault()
+    const postData = async () => {
+      try{
+        const Data = 
+        {
+          "username":username
+        }
+        const response = await axios.post("/signup",
+          Data
+        )
+      }
+      catch(error){
+        console.log(error)
+      }
+      finally{
+        console.log("ola")
+      }
+      postData()
+
+    }
+
+    
+  }
 
   return (
     <>
@@ -35,7 +62,7 @@ function SignUp() {
               alt=""
             />
             <div className="text-4xl w-3/4 flex-col justify-center text-center m-4">
-              <form >
+              <form onSubmit={handleSubmit}>
                 <div className="text-3xl text-center flex flex-col items-center bg-[#52515f] p-4 m-4 rounded-3xl shadow-default ">
                   <h6 className="mb-4">Create an account</h6>
 
